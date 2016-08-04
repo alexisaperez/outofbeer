@@ -14,7 +14,8 @@ while read -r line; do
    BR+=("$line")
 done <<< "${BRANCHES}"
 printf "\n"${PROJ}" has "$(tput setaf 1)${#BR[@]}"$(tput sgr0)"" total branches\n\nYou are currently on\n"
-echo  "${BR[0]}"
+CURRENT=$(echo "${BRANCHES}" | grep -o "\*.*")
+echo  "${CURRENT}"
 printf "\nOther notable branches are:\n"
 printf "%s\n" "${BR[@]:1}"
 function save {
