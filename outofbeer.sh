@@ -50,9 +50,9 @@ function last_diffs {
 
 function git_shortlog {
   LOG=$(cd "${PROJDIR}" && git log | grep -o 'Author:.*' |  sort | uniq -c | sed -e 's/Author://g' | sort -r)
-  echo $LOG
+  printf "\nShowing number of commits by each author \n$LOG\n"
 
 }
 discover_branches
-last_diffs
 git_shortlog
+last_diffs
