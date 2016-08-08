@@ -48,5 +48,11 @@ function last_diffs {
   esac
 }
 
+function git_shortlog {
+  LOG=$(cd "${PROJDIR}" && git log | grep -o 'Author:.*' |  sort | uniq -c | sed -e 's/Author://g' | sort -r)
+  echo $LOG
+
+}
 discover_branches
 last_diffs
+git_shortlog
